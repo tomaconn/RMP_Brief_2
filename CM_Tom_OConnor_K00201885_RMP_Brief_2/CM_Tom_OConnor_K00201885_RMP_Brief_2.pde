@@ -14,19 +14,21 @@ PImage img;
 Capture video;
 
 void setup(){
-  size (740,680);
+  size (740,700);
   video = new Capture(this,640,480,30);
   video.start();
   img = loadImage("data/insta.jpg");
-  //player = minim.loadFile("data/camera.wav");
+  minim = new Minim(this);
+  player = minim.loadFile("data/camera.wav"); 
 }
 
-void mousePressed(){
+void keyPressed(){
+  if(keyCode == DOWN && keyPressed){
   video.read();
   saveFrame();
-  //player.play();
+  player.play();
+  }
 }
-
 void draw() {
   if(video.available()) {
   //video.read();
