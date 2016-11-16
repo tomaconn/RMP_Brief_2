@@ -13,7 +13,7 @@ Minim minim;
 AudioPlayer player;
 PImage img;
 Capture video;
-boolean like = false;
+boolean like = true;
 
 void setup(){
   size (740,700);
@@ -71,6 +71,7 @@ void draw() {
     triangle(58,575,80,600,100,575);
     textSize(30);
     text("You like this", 110,590);
-    like = true;
+    like = false;
   }
+  
 }
