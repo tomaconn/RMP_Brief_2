@@ -19,7 +19,6 @@ void setup(){
   size (740,700);
   video = new Capture(this,640,480,30);
   video.start();
-  //img = loadImage("data/insta.jpg");
   minim = new Minim(this);
   player = minim.loadFile("data/camera.wav"); 
 }
@@ -50,16 +49,16 @@ void draw() {
   billabong = createFont("data/Billabong.ttf",100);
   textFont(billabong);
   image(video,50,70);
-  fill(0);
+  fill(0); 
   
   if(mouseButton == LEFT){
     fill(255,0,0);
     noStroke();
     liked = true;
+    textSize(25);
+    text("You like this", 110,590); 
   }
     ellipse(69.8,570,25,25);
     ellipse(88.4,570,25,25);
-    triangle(58,575,80,600,100,575);
-    textSize(30);
-    text("You like this", 110,590);   
+    triangle(58,575,80,600,100,575); 
   }
