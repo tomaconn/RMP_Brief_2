@@ -13,7 +13,7 @@ Minim minim;
 AudioPlayer player;
 PImage img;
 Capture video;
-boolean like = true;
+boolean liked = false;
 
 void setup(){
   size (740,700);
@@ -36,6 +36,9 @@ void draw() {
   if(video.available()) {
      video.read();
   }
+  if(liked == true){
+    fill(255,0,0);
+  }
   fill(18,86,136);
   rect(50,10,640,60);
   fill(255);
@@ -46,32 +49,17 @@ void draw() {
   text("InstaCam", 310, 50);
   billabong = createFont("data/Billabong.ttf",100);
   textFont(billabong);
-  //image(img,0,0,740,700);
   image(video,50,70);
+  fill(0);
   
-   noStroke();
-   fill(0);
-   ellipse(69.8,570,25,25);
-   noStroke();
-   fill(0);
-   ellipse(88.4,570,25,25);
-   noStroke();
-   fill(0);
-   triangle(58,575,80,600,100,575);
-  
-  if(mousePressed){
-    noStroke();
+  if(mouseButton == LEFT){
     fill(255,0,0);
+    noStroke();
+    liked = true;
+  }
     ellipse(69.8,570,25,25);
-    noStroke();
-    fill(255,0,0);
     ellipse(88.4,570,25,25);
-    noStroke();
-    fill(255,0,0);
     triangle(58,575,80,600,100,575);
     textSize(30);
-    text("You like this", 110,590);
-    like = false;
+    text("You like this", 110,590);   
   }
-  
-}
