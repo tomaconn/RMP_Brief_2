@@ -36,7 +36,7 @@ void keyPressed(){
   video.read();
   //saveFrame();
   player.play();
-  
+  player.rewind();
   }
 }
 void draw() {
