@@ -18,7 +18,7 @@ boolean liked = false;
 XML myInstructions;
 
 void setup(){
-   myInstructions = loadXML ("instructions.xml");
+  myInstructions = loadXML ("instructions.xml");
   XML[]boxes = myInstructions.getChildren("box");
   for(int i=0; i<boxes.length;i++){
     String box = boxes[i].getString("text");
@@ -42,6 +42,7 @@ void keyPressed(){
 void draw() {
   if(video.available()) {
      video.read();
+     video.loadPixels();
   }
   if(liked == true){
     fill(255,0,0);
@@ -54,19 +55,30 @@ void draw() {
   fill(255);
   textSize(32);
   text("InstaCam", 310, 50);
-  //billabong = createFont("data/Billabong.ttf",100);
-  //textFont(billabong);
+  billabong = createFont("data/Billabong.ttf",100);
+  textFont(billabong);
   image(video,50,70);
   fill(0); 
+ 
+ 
   
-  if(mouseButton == LEFT){
+  if(keyCode == 76){
     fill(255,0,0);
     noStroke();
     liked = true;
     textSize(25);
     text("You like this", 110,590); 
   }
-    ellipse(69.8,570,25,25);
-    ellipse(88.4,570,25,25);
-    triangle(58,575,80,600,100,575); 
+  ellipse(69.8,570,25,25);
+  ellipse(88.4,570,25,25);
+  triangle(58,575,80,600,100,575); 
+  fill(255,0,0);
+  textSize(20);
+  text("#Selfie",250,590);
+  fill(0,255,0);
+  text("#Processing",335,590);
+  fill(255,200,0);
+  text("#NoFilter",430,590);
+  fill(0,255,255);
+  text("#NotInstagram",530,590);
   }
