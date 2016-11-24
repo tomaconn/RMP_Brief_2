@@ -57,22 +57,15 @@ void draw() {
   fill(255);
   textSize(32);
   text("InstaCam", 310, 50);
-  billabong = createFont("data/Billabong.ttf", 100);
-  textFont(billabong);
+  //billabong = createFont("data/Billabong.ttf", 100);
+  //textFont(billabong);
   image(video, 50, 70);
   fill(0); 
-<<<<<<< HEAD
-  
-  if(mouseButton == LEFT){
-    
-    fill(255,0,0);
-=======
 
 
 
   if (keyCode == 76) {
     fill(255, 0, 0);
->>>>>>> origin/master
     noStroke();
     liked = true;
     textSize(25);
