@@ -60,6 +60,7 @@ void draw() {
   fill(0); 
   
   if(mouseButton == LEFT){
+    
     fill(255,0,0);
     noStroke();
     liked = true;
