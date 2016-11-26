@@ -9,6 +9,7 @@ import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 import javax.swing.JOptionPane;
 
+PFont myFont;
 PFont billabong;
 Minim minim;
 AudioPlayer player;
@@ -29,6 +30,7 @@ void setup() {
   video.start();
   minim = new Minim(this);
   player = minim.loadFile("data/camera.wav");
+  myFont = createFont("Arial Bold", 32);
 }
 
 void keyPressed() {
@@ -49,13 +51,13 @@ void draw() {
   if (liked == true) {
     fill(255, 0, 0);
   }
+  noStroke();
   fill(18, 86, 136);
   rect(50, 10, 640, 60);
   fill(255);
-  stroke(0);
   rect(50, 550, 640, 120);
   fill(255);
-  textSize(32);
+  textFont(myFont);
   text("InstaCam", 310, 50);
   //billabong = createFont("data/Billabong.ttf", 100);
   //textFont(billabong);
@@ -76,13 +78,13 @@ void draw() {
   triangle(58, 575, 80, 600, 100, 575); 
   fill(255, 0, 0);
   textSize(20);
-  text("#Selfie", 250, 590);
+  text("#Selfie", 200, 650);
   fill(0, 255, 0);
-  text("#Processing", 335, 590);
+  text("#Processing", 290, 650);
   fill(255, 200, 0);
-  text("#NoFilter", 430, 590);
+  text("#NoFilter", 430, 650);
   fill(0, 255, 255);
-  text("#NotInstagram", 530, 590);
+  text("#NotInstagram", 530, 650);
   
   if (keyCode == 75) {
     for (int y = 0; y < video.height; y+=10 ) {
