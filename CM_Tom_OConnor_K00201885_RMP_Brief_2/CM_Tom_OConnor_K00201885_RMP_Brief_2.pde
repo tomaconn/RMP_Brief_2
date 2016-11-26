@@ -13,6 +13,7 @@ PFont myFont;
 PFont billabong;
 Minim minim;
 AudioPlayer player;
+AudioPlayer like;
 PImage img;
 Capture video;
 boolean liked = false;
@@ -30,13 +31,14 @@ void setup() {
   video.start();
   minim = new Minim(this);
   player = minim.loadFile("data/camera.wav");
+  like = minim.loadFile("data/like.mp3");
   myFont = createFont("Arial Bold", 32);
 }
 
 void keyPressed() {
   if (keyCode == DOWN && keyPressed) {
     video.read();
-    saveFrame();
+    //saveFrame();
     player.play();
     player.rewind();
   }
@@ -64,14 +66,14 @@ void draw() {
   image(video, 50, 70);
   fill(0); 
 
-
-
   if (keyCode == 76) {
     fill(255, 0, 0);
     noStroke();
     liked = true;
     textSize(25);
     text("You like this", 110, 590);
+    like.play();
+    //like.rewind();
   }
   ellipse(69.8, 570, 25, 25);
   ellipse(88.4, 570, 25, 25);
