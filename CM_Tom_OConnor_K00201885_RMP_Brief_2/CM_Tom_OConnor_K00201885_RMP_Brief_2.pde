@@ -18,6 +18,8 @@ PImage img;
 Capture video;
 boolean liked = false;
 XML myInstructions;
+Movie movie;
+boolean a = true;
 
 void setup() {
   myInstructions = loadXML ("instructions.xml");
@@ -29,6 +31,7 @@ void setup() {
   size (740, 700);
   video = new Capture(this, 640, 480, 30);
   video.start();
+  movie = new Movie(this,"instructionsVideo.mp4");
   minim = new Minim(this);
   player = minim.loadFile("data/camera.wav");
   like = minim.loadFile("data/like.mp3");
@@ -42,13 +45,16 @@ void keyPressed() {
     player.play();
     player.rewind();
   }
-
 }
 void draw() {
   background(120);
   if (video.available()) {
     video.read();
     video.loadPixels();
+  }
+  if (keyCode == 32 && a == true) {
+    movie.read();
+    movie.loop();
   }
   if (liked == true) {
     fill(255, 0, 0);
@@ -87,8 +93,10 @@ void draw() {
   text("#NoFilter", 430, 650);
   fill(0, 255, 255);
   text("#NotInstagram", 530, 650);
+  image(movie,0,0);
   
-  if (keyCode == 75) {
+  
+  if (keyCode == 75) { // Press K Key for Circle Blur
     for (int y = 0; y < video.height; y+=10 ) {
       for (int x = 0; x < video.width; x+=10 ) {
 
@@ -107,6 +115,28 @@ void draw() {
         shapeX += random(-5, 5);
         shapeY += random(-5, 5);
         ellipse(shapeX, shapeY, 25, 25);
+      }
+    }
+  }
+  if (keyCode == 74) { // Press J Key for Square Blur
+    for (int y = 0; y < video.height; y+=5 ) {
+      for (int x = 0; x < video.width; x+=5 ) {
+
+        int vidloc = x + y*video.width;
+        float r = red(video.pixels[vidloc]);
+        float g = green(video.pixels[vidloc]);
+        float b = blue(video.pixels[vidloc]);
+
+        fill(r, g, b, 130);
+        noStroke();
+
+        int shapeX, shapeY;
+        shapeX = x + (735 - video.width)/2;
+        shapeY = y + (600 - video.height)/2;
+
+        shapeX += random(-5, 5);
+        shapeY += random(-5, 5);
+        rect(shapeX, shapeY, 20, 20);
       }
     }
   }
