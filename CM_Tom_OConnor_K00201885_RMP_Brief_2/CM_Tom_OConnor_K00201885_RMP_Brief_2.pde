@@ -53,8 +53,13 @@ void draw() {
     video.loadPixels();
   }
   if (keyCode == 32 && a == true) {
+    video.read();
     movie.read();
     movie.loop();
+  }
+  if(keyCode != 32) {
+    movie.stop();
+    a = false;
   }
   if (liked == true) {
     fill(255, 0, 0);
