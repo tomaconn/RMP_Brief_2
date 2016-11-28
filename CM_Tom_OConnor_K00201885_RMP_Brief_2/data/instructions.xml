@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
 <boxes>
-	<box id="box1" text="Click on screen to like!"></box>
-	<box id="box2" text="Press DOWN key to take picture!"></box>
+	<box id="box1" text="Click in window to activate InstaCam"></box>
+	<box id="box2" text="Press SPACE BAR for Instructions"></box>
 </boxes>

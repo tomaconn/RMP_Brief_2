@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 
 PFont myFont;
 PFont billabong;
+PImage buttonInstructions;
 Minim minim;
 AudioPlayer player;
 AudioPlayer like;
@@ -31,7 +32,8 @@ void setup() {
   size (740, 700);
   video = new Capture(this, 640, 480, 30);
   video.start();
-  movie = new Movie(this,"instructionsVideo.mp4");
+  buttonInstructions=loadImage("data/buttonInstructions.png");
+  //movie = new Movie(this,"instructionsVideo.mp4");
   minim = new Minim(this);
   player = minim.loadFile("data/camera.wav");
   like = minim.loadFile("data/like.mp3");
@@ -52,14 +54,11 @@ void draw() {
     video.read();
     video.loadPixels();
   }
-  if (keyCode == 32 && a == true) {
-    video.read();
-    movie.read();
-    movie.loop();
-  }
-  if(keyCode != 32) {
-    movie.stop();
-    a = false;
+ 
+  if(keyCode == 82) {
+    tint(255,0);
+    //movie.volume(0);
+    image(video, 50,70);
   }
   
   image(video, 50, 70);
@@ -145,5 +144,10 @@ void draw() {
   text("#NoFilter", 430, 650);
   fill(0, 255, 255);
   text("#NotInstagram", 530, 650);
-  image(movie,0,0);
+  //image(movie,0,0);
+   if (keyCode == 32) {
+    image(buttonInstructions,200,200,0,0);
+    //movie.read();
+    //movie.loop();
+  }
 }
