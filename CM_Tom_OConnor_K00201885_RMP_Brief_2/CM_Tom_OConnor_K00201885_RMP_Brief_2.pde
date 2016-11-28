@@ -61,46 +61,9 @@ void draw() {
     movie.stop();
     a = false;
   }
-  if (liked == true) {
-    fill(255, 0, 0);
-  }
-  noStroke();
-  fill(18, 86, 136);
-  rect(50, 10, 640, 60);
-  fill(255);
-  rect(50, 550, 640, 120);
-  fill(255);
-  textFont(myFont);
-  text("InstaCam", 310, 50);
-  //billabong = createFont("data/Billabong.ttf", 100);
-  //textFont(billabong);
+  
   image(video, 50, 70);
-  fill(0); 
 
-  if (keyCode == 76) {
-    fill(255, 0, 0);
-    noStroke();
-    liked = true;
-    textSize(25);
-    text("You like this", 110, 590);
-    like.play();
-    //like.rewind();
-  }
-  ellipse(69.8, 570, 25, 25);
-  ellipse(88.4, 570, 25, 25);
-  triangle(58, 575, 80, 600, 100, 575); 
-  fill(255, 0, 0);
-  textSize(20);
-  text("#Selfie", 200, 650);
-  fill(0, 255, 0);
-  text("#Processing", 290, 650);
-  fill(255, 200, 0);
-  text("#NoFilter", 430, 650);
-  fill(0, 255, 255);
-  text("#NotInstagram", 530, 650);
-  image(movie,0,0);
-  
-  
   if (keyCode == 75) { // Press K Key for Circle Blur
     for (int y = 0; y < video.height; y+=10 ) {
       for (int x = 0; x < video.width; x+=10 ) {
@@ -145,4 +108,42 @@ void draw() {
       }
     }
   }
+  noStroke();
+  fill(18, 86, 136);
+  rect(50, 10, 640, 60);
+  fill(255);
+  rect(50, 550, 640, 120);
+  fill(255);
+  textFont(myFont);
+  text("InstaCam", 310, 50);
+  //billabong = createFont("data/Billabong.ttf", 100);
+  //textFont(billabong);
+  fill(0); 
+  
+  if (keyCode == 76) {
+    fill(255, 0, 0);
+    noStroke();
+    liked = true;
+    textSize(25);
+    text("You like this", 110, 590);
+    like.play();
+    //like.rewind();
+  }
+  if (liked == true) {
+    fill(255, 0, 0);
+  }
+  
+  ellipse(69.8, 570, 25, 25);
+  ellipse(88.4, 570, 25, 25);
+  triangle(58, 575, 80, 600, 100, 575); 
+  fill(255, 0, 0);
+  textSize(20);
+  text("#Selfie", 200, 650);
+  fill(0, 255, 0);
+  text("#Processing", 290, 650);
+  fill(255, 200, 0);
+  text("#NoFilter", 430, 650);
+  fill(0, 255, 255);
+  text("#NotInstagram", 530, 650);
+  image(movie,0,0);
 }
