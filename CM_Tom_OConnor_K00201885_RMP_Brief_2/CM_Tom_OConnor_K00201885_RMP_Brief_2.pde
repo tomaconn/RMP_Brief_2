@@ -1,6 +1,6 @@
 //RMP_Brief_2
 
-import processing.video.*;
+import processing.video.*;                      // Importing Video, Minim and JOptionPane libraries for live video capture, audio and XML capabilities
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
@@ -42,7 +42,7 @@ void setup() {
 void keyPressed() {
   if (keyCode == DOWN && keyPressed) {
     video.read();
-    //saveFrame();
+    save("Gallery/Photo.tif");
     player.play();
     player.rewind();
   }
@@ -56,7 +56,7 @@ void draw() {
  
   image(video, 50, 70);
 
-  if (keyCode == 75) { // Press K Key for Circle Blur
+  if (keyCode == 75) {                                // Press K Key for Circle Blur
     for (int y = 0; y < video.height; y+=10 ) {
       for (int x = 0; x < video.width; x+=10 ) {
 
@@ -78,7 +78,7 @@ void draw() {
       }
     }
   }
-  if (keyCode == 74) { // Press J Key for Square Blur
+  if (keyCode == 74) {                               // Press J Key for Square Blur
     for (int y = 0; y < video.height; y+=5 ) {
       for (int x = 0; x < video.width; x+=5 ) {
 
