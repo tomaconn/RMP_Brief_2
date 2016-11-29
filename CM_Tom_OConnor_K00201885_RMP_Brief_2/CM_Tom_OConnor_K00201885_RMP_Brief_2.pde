@@ -19,7 +19,7 @@ Capture video;
 boolean liked = false;
 XML myInstructions;
 Movie movie;
-
+int counter = 0;
 
 void setup() {
   myInstructions = loadXML ("instructions.xml");
@@ -42,10 +42,11 @@ void setup() {
 void keyPressed() {
   if (keyCode == DOWN && keyPressed) {
     video.read();
-    save("Gallery/Photo.tif");
+  }
+    save("Gallery/photo" + counter + ".tiff");
+    counter++;
     player.play();
     player.rewind();
-  }
 }
 void draw() {
   background(120);
