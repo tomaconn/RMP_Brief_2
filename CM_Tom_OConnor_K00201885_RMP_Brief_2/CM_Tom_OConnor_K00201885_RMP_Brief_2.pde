@@ -10,10 +10,8 @@ import ddf.minim.ugens.*;
 import javax.swing.JOptionPane;
 
 PFont myFont;
-PFont billabong;
 PImage buttonInstructions;
 PImage header;
-PImage img;
 Minim minim;
 AudioPlayer player;
 AudioPlayer like;
@@ -35,11 +33,10 @@ void setup() {
   video.start();
   buttonInstructions=loadImage("data/buttonInstructions.png");
   header = loadImage("data/headerBox.png");
-  //movie = new Movie(this,"instructionsVideo.mp4");
   minim = new Minim(this);
   player = minim.loadFile("data/camera.wav");
   like = minim.loadFile("data/like.mp3");
-  //myFont = createFont("Arial Bold", 32);
+  myFont = createFont("Arial Bold", 32);
 }
 
 void keyPressed() {
@@ -57,13 +54,6 @@ void draw() {
     video.loadPixels();
   }
  
-  if(keyCode == 82) {
-    tint(255,0);
-    //movie.volume(0);
-    image(video, 50,70);
-  }
-  
-  
   image(video, 50, 70);
 
   if (keyCode == 75) { // Press K Key for Circle Blur
@@ -111,16 +101,9 @@ void draw() {
     }
   }
   noStroke();
-  //fill(18, 86, 136);
-  //rect(50, 10, 640, 60);   // InstaCam Header Box
   image(header,50,10,640,75);
   fill(255);
   rect(50, 550, 640, 120);   // Footer Box
-  //fill(255);
-  //textFont(myFont);
-  //text("InstaCam", 310, 50);
-  //billabong = createFont("data/Billabong.ttf", 100);
-  //textFont(billabong);
   fill(0); 
   
   if (keyCode == 76) {
@@ -130,7 +113,6 @@ void draw() {
     textSize(25);
     text("You like this", 110, 590);
     like.play();
-    //like.rewind();
   }
   if (liked == true) {
     fill(255, 0, 0);
@@ -148,11 +130,8 @@ void draw() {
   text("#NoFilter", 430, 650);
   fill(0, 255, 255);
   text("#NotInstagram", 530, 650);
-  //image(movie,0,0);
   
    if (keyCode == 32) {
     image(buttonInstructions,50,10,640,660);
-    //movie.read();
-    //movie.loop();
   }
 }
