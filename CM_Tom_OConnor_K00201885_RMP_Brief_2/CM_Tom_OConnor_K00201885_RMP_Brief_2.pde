@@ -15,6 +15,7 @@ PImage header;
 Minim minim;
 AudioPlayer player;
 AudioPlayer like;
+AudioPlayer instruct;
 Capture video;
 boolean liked = false;
 XML myInstructions;
@@ -36,9 +37,9 @@ void setup() {
   minim = new Minim(this);
   player = minim.loadFile("data/camera.wav");                    // The audio for the camera is loaded
   like = minim.loadFile("data/like.mp3");                        // The audio for the like is loaded
+  instruct = minim.loadFile("data/instructionSound.mp3");
   myFont = createFont("Arial Bold", 32);                         // Created a font for the footer
 }
-
 void keyPressed() {
   if (keyCode == DOWN) {                                  // When the DOWN key is pressed, a snapshot of the live video is taken, the camera audio plays and rewinds to be used again
     video.read();
@@ -53,9 +54,7 @@ void draw() {
   if (video.available()) {
     video.read();                                      // If the video is available when you run the sketch it is read at its current frame
   }
-
   image(video, 50, 70);                                // The video is displayed and positioned on the sketch
-
   if (keyCode == 75) {                                // Press K Key for Circle Blur
     for (int y = 0; y < video.height; y+=10 ) {
       for (int x = 0; x < video.width; x+=10 ) {      // Looping through for the space between the ellipses
@@ -101,7 +100,7 @@ void draw() {
     }
   }
   noStroke();
-  image(header,50,10,640,75);  // Header Box
+  image(header, 50, 10, 640, 75);  // Header Box
   fill(255);
   rect(50, 550, 640, 120);   // Footer Box
   fill(0); 
@@ -117,7 +116,6 @@ void draw() {
   if (liked == true) {
     fill(255, 0, 0);
   }
-  
   ellipse(69.8, 570, 25, 25);                // Two ellipses and a triangle positioned in the shape of a heart
   ellipse(88.4, 570, 25, 25);
   triangle(58, 575, 80, 600, 100, 575); 
@@ -131,7 +129,13 @@ void draw() {
   fill(0, 255, 255);
   text("#NotInstagram", 530, 650);
   
-   if (keyCode == 32) {                          // If the space-bar is pressed, the instructions PNG appears infront of the InstaCam
-    image(buttonInstructions,50,10,640,660);
+  if (keyCode == 32) {                          // If the space-bar is pressed, the instructions PNG appears infront of the InstaCam
+    image(buttonInstructions, 50, 10, 640, 660);
+    instruct.play();
+  }
+  
+   if (keyCode == 82) {                        // If the R key is pressed the instructions and audio both stop
+    image(buttonInstructions,0,0,0,0);
+    instruct.mute();
   }
 }
