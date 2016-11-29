@@ -99,11 +99,14 @@ void draw() {
       }
     }
   }
+  fill(255);
+  rect(680,10,30,660);         
+  rect(20,10,30,660);
   noStroke();
-  image(header, 50, 10, 640, 75);  // Header Box
+  image(header, 20, 10, 690, 76);  // Header Box
   fill(255);
   rect(50, 550, 640, 120);   // Footer Box
-  fill(0); 
+  fill(0);  
   
   if (keyCode == 76) {        //  When the L key is pressed, the heart shape turns red, the text 'You like this' appears next to it and the 'like' audio plays
     fill(255, 0, 0);
@@ -130,7 +133,7 @@ void draw() {
   text("#NotInstagram", 530, 650);
   
   if (keyCode == 32) {                          // If the space-bar is pressed, the instructions PNG appears infront of the InstaCam
-    image(buttonInstructions, 50, 10, 640, 660);
+    image(buttonInstructions, 20, 10, 690, 660);
     instruct.play();
   }
   
